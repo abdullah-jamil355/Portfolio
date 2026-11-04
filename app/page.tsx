@@ -1,0 +1,147 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const email = "muhammadabdullah53a@gmail.com";
+const skills = ["Agentic AI", "React", "Next.js", "TypeScript", "Node.js", "MongoDB", "Yjs", "WebSockets", "REST APIs"];
+
+function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <div className={`reveal ${className}`}>{children}</div>;
+}
+
+export default function Home() {
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [passFlipped, setPassFlipped] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("portfolio-theme");
+    const preferred = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    setTheme(saved === "light" || saved === "dark" ? saved : preferred);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  useEffect(() => {
+    const moveGlow = (event: PointerEvent) => {
+      document.documentElement.style.setProperty("--x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--y", `${event.clientY}px`);
+    };
+    window.addEventListener("pointermove", moveGlow, { passive: true });
+    return () => window.removeEventListener("pointermove", moveGlow);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleTheme = () => setTheme((current) => {
+    const next = current === "dark" ? "light" : "dark";
+    localStorage.setItem("portfolio-theme", next);
+    return next;
+  });
+
+  return (
+    <>
+      <div className="cursor-glow" aria-hidden="true" />
+      <header className="site-header">
+        <a className="brand" href="#home">Abdullah Jamil<span>.</span></a>
+        <nav aria-label="Main navigation">
+          <a href="#experience">Experience</a><a href="#work">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+        </nav>
+        <button className="theme-toggle" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`} title="Toggle color theme">{theme === "dark" ? "☼" : "☾"}</button>
+      </header>
+
+      <main id="home">
+        <section className="hero page-wrap">
+          <div className="hero-copy">
+            <div className="availability"><span className="status-dot" /> Open to Work <i>·</i> Karachi, Pakistan</div>
+            <h1>Muhammad<br /><em>Abdullah Jamil</em></h1>
+            <p className="hero-role">Full Stack Developer <span>·</span> Real-time apps &amp; AI-assisted engineering</p>
+            <p className="hero-intro">Full stack developer from Karachi. I’ve worked on real-time projects with AI agents and follow professional standards so the work holds up.</p>
+            <div className="hero-actions"><a className="button button-primary" href="#work">Explore my work <span>↗</span></a><a className="button button-quiet" href={`mailto:${email}`}>Email me</a></div>
+            <div className="hero-social"><a href="https://github.com/abdullah-jamil355" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/abdullah-jamil-593066222" target="_blank" rel="noreferrer">LinkedIn ↗</a><span>Available for remote work</span></div>
+          </div>
+          <div className="pass-stage" aria-label="Developer access pass">
+            <div
+              className={`pass-card${passFlipped ? " is-flipped" : ""}`}
+              role="button"
+              tabIndex={0}
+              aria-pressed={passFlipped}
+              aria-label={passFlipped ? "Show the front of Abdullah's access card" : "Flip the access card to read about Abdullah"}
+              onClick={() => setPassFlipped((flipped) => !flipped)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setPassFlipped((flipped) => !flipped);
+                }
+              }}
+            >
+              <div className="pass-card-inner">
+                <div className="pass-face pass-face-front">
+                  <div className="pass-top"><span>PORTFOLIO / 2026</span><span className="pass-star">✳</span></div>
+                  <div className="pass-center"><span className="pass-kicker">FULL STACK DEVELOPER</span><strong>Muhammad<br /><em>Abdullah</em></strong><span className="pass-location">KARACHI · PAKISTAN</span></div>
+                  <div className="pass-bottom"><div><span className="pass-kicker">BUILDING WITH</span><b>AI agents · Real-time systems</b></div><span className="monogram">A</span></div>
+                  <div className="pass-orbit orbit-one" /><div className="pass-orbit orbit-two" />
+                  <span className="pass-hint">HOVER OR TAP TO FLIP ↻</span>
+                </div>
+                <div className="pass-face pass-face-back">
+                  <div className="pass-back-heading"><span className="pass-kicker">A LITTLE ABOUT ME</span><span className="pass-star">✳</span></div>
+                  <ul className="pass-points">
+                    <li>Just getting started. Always learning what the next challenge needs.</li>
+                    <li>Curious about what’s possible. Accountable for what I build.</li>
+                    <li>Growing my experience with large-scale production systems, building on my work with real-time apps and observability.</li>
+                    <li>In the next five years, I see myself as a confident full-stack engineer who can own products end to end and build reliable real-time systems at production scale. I want to deepen my skills in system design and production engineering by working on real products with a strong team. I’m starting by building solid fundamentals, taking ownership, and learning from every project.</li>
+                  </ul>
+                  <span className="pass-back-mark">MUHAMMAD ABDULLAH JAMIL <i>·</i> FULL STACK DEVELOPER</span>
+                </div>
+              </div>
+            </div>
+            <div className="pass-caption"><span>INDEPENDENT THINKING</span><span>01 — 03</span></div>
+          </div>
+        </section>
+
+        <div className="marquee" aria-label="Technologies"><div className="marquee-track">{[...skills, ...skills].map((skill, i) => <span key={`${skill}-${i}`}>{skill}<i>✦</i></span>)}</div></div>
+
+        <section id="experience" className="section page-wrap">
+          <Reveal><div className="section-heading"><span className="eyebrow">THE JOURNEY</span><h2>Experience</h2><p>Taking ideas from first sketch to deployed product.</p></div></Reveal>
+          <Reveal className="timeline-wrap"><div className="timeline-line" /><article className="experience-card"><div className="timeline-marker" /><div className="experience-meta"><span>CODERATORY · KARACHI</span><span>SEP 2026 — DEC 2026 · 3 MONTHS</span></div><h3>Full Stack Developer Intern</h3><p className="experience-lead">Designed, built and released Orbito, a real-time collaborative whiteboard, owning the work from discovery to release and further iterations.</p><div className="experience-points"><p>Built live collaboration with Yjs, Hocuspocus and WebSockets, plus shapes, templates, sticky notes and XML save/open.</p><p>Implemented login, signup, Google OAuth, email flows and Zod-validated REST APIs.</p><p>Created an admin observability dashboard; worked through mentor code reviews and deployed with Vercel and Render.</p></div><div className="tag-list"><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span><span>Yjs</span><span>WebSockets</span></div></article></Reveal>
+        </section>
+
+        <section id="work" className="section page-wrap">
+          <Reveal><div className="section-heading"><span className="eyebrow">SELECTED WORK</span><h2>Built to work<br /><em>together.</em></h2><p>Real-time collaboration and the systems that keep it observable.</p></div></Reveal>
+          <div className="project-grid">
+            <Reveal className="project-card project-featured"><a className="project-image" href="https://whiteboard-orbito.vercel.app" target="_blank" rel="noreferrer"><img src="/assets/orbito-canvas.webp" alt="Orbito collaborative whiteboard with a flowchart, sticky notes and drawing tools" /><span className="image-open">View live ↗</span></a><div className="project-content"><div className="project-index">01 / FLAGSHIP PROJECT</div><h3>Orbito<span> — Real-time collaborative whiteboard</span></h3><p>A shared canvas where up to 25 people can draw together live. Built end to end at Coderatory and reviewed by my mentor.</p><ul className="project-highlights"><li>Up to 25 members collaborating at once</li><li>Shapes, templates, sticky notes and XML board files</li><li>Google OAuth and email authentication</li><li>0% observed error rate on the live deployment</li></ul><div className="tag-list"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Yjs</span><span>Hocuspocus</span><span>MongoDB</span></div><div className="project-links"><a href="https://whiteboard-orbito.vercel.app" target="_blank" rel="noreferrer">Open live project ↗</a><a href="https://github.com/abdullah-jamil355/Whiteboard-Orbito" target="_blank" rel="noreferrer">GitHub ↗</a></div><small className="hosting-note">First load may take a moment (free-tier hosting).</small></div></Reveal>
+            <Reveal className="project-card"><a className="project-image" href="https://whiteboard-orbito.vercel.app/observability" target="_blank" rel="noreferrer"><img src="/assets/orbito-dashboard.webp" alt="Orbito observability dashboard showing traffic, latency, error rate and active rooms" /><span className="image-open">View dashboard ↗</span></a><div className="project-content"><div className="project-index">02 / OPERATIONS</div><h3>Orbito Observability Dashboard</h3><p>An admin view for real-time traffic, latency, errors, active collaboration, memory and API performance.</p><ul className="project-highlights"><li>Live request traces and endpoint load</li><li>0% observed error rate</li><li>475.9–832.0 ms observed average latency</li></ul><div className="tag-list"><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Telemetry</span></div></div></Reveal>
+          </div>
+        </section>
+
+        <section id="skills" className="section page-wrap skills-section">
+          <Reveal><div className="section-heading"><span className="eyebrow">TOOLS OF THE TRADE</span><h2>My toolkit</h2><p>Tools I use, and the areas I keep exploring.</p></div></Reveal>
+          <div className="skill-groups">
+            {[["Languages", "TypeScript", "JavaScript", "Python", "Java (core)"], ["Frontend", "React", "Next.js", "Tailwind CSS", "Radix UI", "Shadcn UI", "Custom SVG"], ["Backend & data", "Node.js", "Express", "MongoDB", "Mongoose", "Zod", "Nodemailer", "Google OAuth"], ["Real-time", "Yjs · CRDTs", "Hocuspocus", "WebSockets"], ["AI-assisted development", "Claude", "Codex", "Gemini", "Antigravity", "Agentic AI · in progress"], ["Tools & craft", "GitHub", "Vercel", "Render", "LaTeX", "Ownership", "Fast learner"]].map(([group, ...items]) => <Reveal key={group} className="skill-group"><h3>{group}</h3><div className="skill-pills">{items.map((item) => <span key={item}>{item}</span>)}</div></Reveal>)}
+          </div>
+        </section>
+
+        <section className="section page-wrap education-section">
+          <Reveal><div className="education-panel"><div><span className="eyebrow">FOUNDATION</span><h2>Education</h2><p>Bachelor’s in Software Engineering</p><span className="education-school">Sir Syed University of Engineering &amp; Technology</span></div><div className="education-year">2026<span>GRADUATED</span></div></div></Reveal>
+        </section>
+
+        <section id="contact" className="contact-section page-wrap">
+          <Reveal><span className="eyebrow">HAVE SOMETHING IN MIND?</span><h2>Let’s make<br /><em>it real.</em></h2><p>Open to internships, full-time roles and remote work. I’d be glad to hear what you’re building.</p><a className="button button-primary contact-cta" href={`mailto:${email}`}>Email Abdullah <span>↗</span></a><div className="contact-links"><a href="https://www.linkedin.com/in/abdullah-jamil-593066222" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/abdullah-jamil355" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://wa.me/923412992721" target="_blank" rel="noreferrer">Chat on WhatsApp ↗</a></div><div className="resume-note">Resume update in progress <span>·</span> check back soon</div></Reveal>
+        </section>
+      </main>
+      <footer className="site-footer page-wrap"><a className="brand" href="#home">Abdullah Jamil<span>.</span></a><span>Designed &amp; built with care · Karachi, Pakistan</span><a href="#home">Back to top ↑</a></footer>
+    </>
+  );
+}
