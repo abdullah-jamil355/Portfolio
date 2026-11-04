@@ -524,7 +524,13 @@ main, header, footer {
   transition: transform .22s ease, border-color .22s ease, color .22s ease, background .22s ease;
 }
 .contact-links .contact-icon svg { width: 17px; height: 17px; stroke-width: 1.8; }
+.contact-links .whatsapp-icon svg { width: 16px; height: 18px; stroke: none; }
 .contact-links .contact-icon:hover { transform: translateY(-3px); border-color: var(--gold); background: var(--gold-glow); color: var(--gold); }
+.contact-links .linkedin-icon, .contact-links .linkedin-icon:hover { color: #0a66c2; }
+.contact-links .github-icon, .contact-links .github-icon:hover { color: #181717; }
+.contact-links .whatsapp-icon, .contact-links .whatsapp-icon:hover { color: #25d366; }
+[data-theme="dark"] .contact-links .github-icon,
+[data-theme="dark"] .contact-links .github-icon:hover { color: #f5f5f5; }
 .resume-note { margin-top: 25px; color: var(--mute); font: 10px var(--font-mono), monospace; }
 .resume-note span { color: var(--gold); }
 .site-footer { min-height: 82px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: var(--mute); font-size: 10px; }
