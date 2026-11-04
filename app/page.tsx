@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 const email = "muhammadabdullah53a@gmail.com";
-const skills = ["Agentic AI", "React", "Next.js", "TypeScript", "Node.js", "MongoDB", "Yjs", "WebSockets", "REST APIs"];
 
 function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`reveal ${className}`}>{children}</div>;
@@ -111,8 +110,6 @@ export default function Home() {
             <div className="pass-caption"><span>INDEPENDENT THINKING</span><span>01 — 03</span></div>
           </div>
         </section>
-
-        <div className="marquee" aria-label="Technologies"><div className="marquee-track">{[...skills, ...skills].map((skill, i) => <span key={`${skill}-${i}`}>{skill}<i>✦</i></span>)}</div></div>
 
         <section id="experience" className="section page-wrap">
           <Reveal><div className="section-heading"><span className="eyebrow">THE JOURNEY</span><h2>Experience</h2><p>Taking ideas from first sketch to deployed product.</p></div></Reveal>
