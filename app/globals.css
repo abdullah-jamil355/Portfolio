@@ -512,6 +512,19 @@ main, header, footer {
 .contact-section > .reveal > p { max-width: 490px; margin: 22px auto 28px; color: var(--mute); font-size: 15px; }
 .contact-cta { min-width: 184px; }
 .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 27px; margin-top: 36px; color: var(--mute); font-size: 12px; }
+.contact-links .contact-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--card-bg);
+  color: var(--mute);
+  transition: transform .22s ease, border-color .22s ease, color .22s ease, background .22s ease;
+}
+.contact-links .contact-icon svg { width: 17px; height: 17px; stroke-width: 1.8; }
+.contact-links .contact-icon:hover { transform: translateY(-3px); border-color: var(--gold); background: var(--gold-glow); color: var(--gold); }
 .resume-note { margin-top: 25px; color: var(--mute); font: 10px var(--font-mono), monospace; }
 .resume-note span { color: var(--gold); }
 .site-footer { min-height: 82px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: var(--mute); font-size: 10px; }

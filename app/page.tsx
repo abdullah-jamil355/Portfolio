@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Github, Linkedin, MessageCircle } from "lucide-react";
 
 const email = "muhammadabdullah53a@gmail.com";
 
@@ -136,7 +137,7 @@ export default function Home() {
         </section>
 
         <section id="contact" className="contact-section page-wrap">
-          <Reveal><span className="eyebrow">HAVE SOMETHING IN MIND?</span><h2>Let’s make<br /><em>it real.</em></h2><p>Open to internships, full-time roles and remote work. I’d be glad to hear what you’re building.</p><a className="button button-primary contact-cta" href={`mailto:${email}`}>Email Abdullah <span>↗</span></a><div className="contact-links"><a href="https://www.linkedin.com/in/abdullah-jamil-593066222" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/abdullah-jamil355" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://wa.me/923412992721" target="_blank" rel="noreferrer">Chat on WhatsApp ↗</a></div><div className="resume-note">Resume update in progress <span>·</span> check back soon</div></Reveal>
+          <Reveal><span className="eyebrow">HAVE SOMETHING IN MIND?</span><h2>Let’s make<br /><em>it real.</em></h2><p>Open to internships, full-time roles and remote work. I’d be glad to hear what you’re building.</p><a className="button button-primary contact-cta" href={`mailto:${email}`}>Email Abdullah <span>↗</span></a><div className="contact-links"><a className="contact-icon" href="https://www.linkedin.com/in/abdullah-jamil-593066222" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin aria-hidden="true" /></a><a className="contact-icon" href="https://github.com/abdullah-jamil355" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub"><Github aria-hidden="true" /></a><a className="contact-icon" href="https://wa.me/923412992721" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><MessageCircle aria-hidden="true" /></a></div><div className="resume-note">Resume update in progress <span>·</span> check back soon</div></Reveal>
         </section>
       </main>
       <footer className="site-footer page-wrap"><a className="brand" href="#home">Abdullah Jamil<span>.</span></a><span>Designed &amp; built with care · Karachi, Pakistan</span><a href="#home">Back to top ↑</a></footer>
