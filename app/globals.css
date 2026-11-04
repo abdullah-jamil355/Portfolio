@@ -65,20 +65,6 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Background spotlight cursor glow */
-#cursor-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    420px circle at var(--x, 50%) var(--y, 30%),
-    var(--gold-glow),
-    transparent 72%
-  );
-  z-index: 0;
-  transition: opacity 0.3s ease;
-}
-
 /* Main page layout */
 main, header, footer {
   position: relative;
@@ -385,14 +371,6 @@ main, header, footer {
 }
 
 /* Current portfolio page layout */
-.cursor-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(420px circle at var(--x, 76%) var(--y, 24%), var(--gold-glow), transparent 72%);
-}
-
 .site-header, .site-footer, main { position: relative; z-index: 1; }
 .site-header {
   width: min(1320px, calc(100% - 64px));
@@ -649,4 +627,30 @@ main, header, footer {
   .pass-points { gap: 9px; }
   .pass-points li { font-size: 11px; line-height: 1.45; }
   .pass-back-mark { font-size: 7px; }
+}
+
+/* Static presentation: no motion or hover animation */
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+html { scroll-behavior: auto !important; }
+*:hover { transform: none !important; }
+.reveal { opacity: 1 !important; transform: none !important; }
+.timeline-line { transform: scaleY(1) !important; }
+.pass-stage { animation: none !important; translate: none !important; }
+.pass-card { animation: none !important; transform: none !important; cursor: default; }
+.pass-card-inner, .pass-card:hover .pass-card-inner, .pass-card:focus-visible .pass-card-inner { transform: none !important; }
+.pass-face-back { display: none !important; }
+.pass-face-front { transform: none !important; }
+.outlook-section { padding-top: 100px; }
+.outlook-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.outlook-grid li { min-height: 145px; padding: 22px 24px; border: 1px solid var(--line); background: var(--card-bg); }
+.outlook-grid li > span { color: var(--gold2); font: 10px var(--font-mono), monospace; letter-spacing: .15em; }
+.outlook-grid li > p { margin: 14px 0 0; color: var(--mute); font-size: 14px; line-height: 1.7; }
+@media (max-width: 650px) {
+  .outlook-section { padding-top: 78px; }
+  .outlook-grid { grid-template-columns: 1fr; }
+  .outlook-grid li { min-height: 0; padding: 20px; }
 }

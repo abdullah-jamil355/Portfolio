@@ -5,12 +5,11 @@ import { useEffect, useState } from "react";
 const email = "muhammadabdullah53a@gmail.com";
 
 function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`reveal ${className}`}>{children}</div>;
+  return <div className={className}>{children}</div>;
 }
 
 export default function Home() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [passFlipped, setPassFlipped] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("portfolio-theme");
@@ -22,38 +21,14 @@ export default function Home() {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 
-  useEffect(() => {
-    const moveGlow = (event: PointerEvent) => {
-      document.documentElement.style.setProperty("--x", `${event.clientX}px`);
-      document.documentElement.style.setProperty("--y", `${event.clientY}px`);
-    };
-    window.addEventListener("pointermove", moveGlow, { passive: true });
-    return () => window.removeEventListener("pointermove", moveGlow);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   const toggleTheme = () => setTheme((current) => {
     const next = current === "dark" ? "light" : "dark";
     localStorage.setItem("portfolio-theme", next);
-    setPassFlipped(false);
     return next;
   });
 
   return (
     <>
-      <div className="cursor-glow" aria-hidden="true" />
       <header className="site-header">
         <a className="brand" href="#home">Abdullah Jamil<span>.</span></a>
         <nav aria-label="Main navigation">
@@ -73,42 +48,28 @@ export default function Home() {
             <div className="hero-social"><a href="https://github.com/abdullah-jamil355" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/abdullah-jamil-593066222" target="_blank" rel="noreferrer">LinkedIn ↗</a><span>Available for remote work</span></div>
           </div>
           <div className="pass-stage" aria-label="Developer access pass">
-            <div
-              className={`pass-card${passFlipped ? " is-flipped" : ""}`}
-              role="button"
-              tabIndex={0}
-              aria-pressed={passFlipped}
-              aria-label={passFlipped ? "Show the front of Abdullah's access card" : "Flip the access card to read about Abdullah"}
-              onClick={() => setPassFlipped((flipped) => !flipped)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  setPassFlipped((flipped) => !flipped);
-                }
-              }}
-            >
+            <div className="pass-card">
               <div className="pass-card-inner">
                 <div className="pass-face pass-face-front">
                   <div className="pass-top"><span>PORTFOLIO / 2026</span><span className="pass-star">✳</span></div>
                   <div className="pass-center"><span className="pass-kicker">FULL STACK DEVELOPER</span><strong>Muhammad<br /><em>Abdullah</em></strong><span className="pass-location">KARACHI · PAKISTAN</span></div>
                   <div className="pass-bottom"><div><span className="pass-kicker">BUILDING WITH</span><b>AI agents · Real-time systems</b></div><span className="monogram">A</span></div>
                   <div className="pass-orbit orbit-one" /><div className="pass-orbit orbit-two" />
-                  <span className="pass-hint">HOVER OR TAP TO FLIP ↻</span>
-                </div>
-                <div className="pass-face pass-face-back">
-                  <div className="pass-back-heading"><span className="pass-kicker">A LITTLE ABOUT ME</span><span className="pass-star">✳</span></div>
-                  <ul className="pass-points">
-                    <li>Just getting started. Always learning what the next challenge needs.</li>
-                    <li>Curious about what’s possible. Accountable for what I build.</li>
-                    <li>Want to grow my experience with large-scale production systems, building on my work with real-time apps and observability.</li>
-                    <li>In the next five years, I see myself as a confident full-stack engineer who can own products end to end and build reliable real-time systems at production scale. I want to deepen my skills in system design and production engineering by working on real products with a strong team. I’m starting by building solid fundamentals, taking ownership, and learning from every project.</li>
-                  </ul>
-                  <span className="pass-back-mark">MUHAMMAD ABDULLAH JAMIL <i>·</i> FULL STACK DEVELOPER</span>
                 </div>
               </div>
             </div>
             <div className="pass-caption"><span>INDEPENDENT THINKING</span><span>01 — 03</span></div>
           </div>
+        </section>
+
+        <section id="outlook" className="section page-wrap outlook-section">
+          <div className="section-heading"><span className="eyebrow">A LITTLE ABOUT ME</span><h2>My outlook</h2><p>How I’m approaching the start of my career and where I hope it leads.</p></div>
+          <ul className="outlook-grid">
+            <li><span>01</span><p>Just getting started. Always learning what the next challenge needs.</p></li>
+            <li><span>02</span><p>Curious about what’s possible. Accountable for what I build.</p></li>
+            <li><span>03</span><p>Want to grow my experience with large-scale production systems, building on my work with real-time apps and observability.</p></li>
+            <li><span>04</span><p>In the next five years, I see myself as a confident full-stack engineer who can own products end to end and build reliable real-time systems at production scale. I want to deepen my skills in system design and production engineering by working on real products with a strong team. I’m starting by building solid fundamentals, taking ownership, and learning from every project.</p></li>
+          </ul>
         </section>
 
         <section id="experience" className="section page-wrap">
