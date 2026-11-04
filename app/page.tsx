@@ -101,7 +101,7 @@ export default function Home() {
                   <ul className="pass-points">
                     <li>Just getting started. Always learning what the next challenge needs.</li>
                     <li>Curious about what’s possible. Accountable for what I build.</li>
-                    <li>Growing my experience with large-scale production systems, building on my work with real-time apps and observability.</li>
+                    <li>Want to grow my experience with large-scale production systems, building on my work with real-time apps and observability.</li>
                     <li>In the next five years, I see myself as a confident full-stack engineer who can own products end to end and build reliable real-time systems at production scale. I want to deepen my skills in system design and production engineering by working on real products with a strong team. I’m starting by building solid fundamentals, taking ownership, and learning from every project.</li>
                   </ul>
                   <span className="pass-back-mark">MUHAMMAD ABDULLAH JAMIL <i>·</i> FULL STACK DEVELOPER</span>
