@@ -165,7 +165,7 @@ main, header, footer {
   overflow: hidden;
 }
 
-[data-theme="light"] .pass-card {
+[data-theme="light"] .pass-face-front {
   background: linear-gradient(155deg, #44132c, #1f0612 62%, #300b21);
   border: 1px solid rgba(232, 201, 138, 0.7);
   box-shadow: 0 35px 85px -15px rgba(45, 12, 32, 0.4),
@@ -568,6 +568,13 @@ main, header, footer {
   outline: none;
 }
 .pass-card::before { content: none; }
+:root[data-theme="light"] .pass-card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  animation: none !important;
+}
 .pass-card:focus-visible .pass-card-inner { outline: 2px solid var(--gold); outline-offset: 6px; }
 .pass-card-inner {
   position: relative;

@@ -48,6 +48,7 @@ export default function Home() {
   const toggleTheme = () => setTheme((current) => {
     const next = current === "dark" ? "light" : "dark";
     localStorage.setItem("portfolio-theme", next);
+    setPassFlipped(false);
     return next;
   });
 
