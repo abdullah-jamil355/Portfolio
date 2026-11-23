@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Muhammad Abdullah Jamil · Full Stack Developer",
   description:
-    "Full stack developer from Karachi, Pakistan shipping real-time collaborative apps and AI-assisted engineering with production-grade standards.",
+    "Full stack developer from Karachi, Pakistan with experience building a real-time collaborative app, observability features, and AI-assisted engineering workflows.",
   keywords: [
     "Muhammad Abdullah Jamil",
     "Full Stack Developer",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Muhammad Abdullah Jamil · Full Stack Developer",
     description:
-      "Full stack developer shipping real-time projects with AI agents. Open to internships and full-time roles.",
+      "Full stack developer with experience building real-time projects with AI agents. Interested in growing into production engineering. Open to internships and full-time roles.",
     url: "https://portfolio-abdullah.vercel.app",
     siteName: "Muhammad Abdullah Jamil Portfolio",
     locale: "en_US",

@@ -67,8 +67,8 @@ export default function Home() {
           <ul className="outlook-grid">
             <li><span>01</span><p>Just getting started. Always learning what the next challenge needs.</p></li>
             <li><span>02</span><p>Curious about what’s possible. Accountable for what I build.</p></li>
-            <li><span>03</span><p>Want to grow my experience with large-scale production systems, building on my work with real-time apps and observability.</p></li>
-            <li><span>04</span><p>In the next five years, I see myself as a confident full-stack engineer who can own products end to end and build reliable real-time systems at production scale. I want to deepen my skills in system design and production engineering by working on real products with a strong team. I’m starting by building solid fundamentals, taking ownership, and learning from every project.</p></li>
+            <li><span>03</span><p>I want to grow my experience with large-scale production systems, building on my work with real-time apps and observability.</p></li>
+            <li><span>04</span><p>In the next five years, I hope to become a confident full-stack engineer who can own products end to end and help build reliable real-time systems at production scale. I want to deepen my skills in system design and production engineering by working on real products with a strong team. I’m starting by building solid fundamentals, taking ownership, and learning from every project.</p></li>
           </ul>
         </section>
 
@@ -88,7 +88,7 @@ export default function Home() {
         <section id="skills" className="section page-wrap skills-section">
           <Reveal><div className="section-heading"><span className="eyebrow">TOOLS OF THE TRADE</span><h2>My toolkit</h2><p>Tools I use, and the areas I keep exploring.</p></div></Reveal>
           <div className="skill-groups">
-            {[["Languages", "TypeScript", "JavaScript", "Python", "Java (core)"], ["Frontend", "React", "Next.js", "Tailwind CSS", "Radix UI", "Shadcn UI", "Custom SVG"], ["Backend & data", "Node.js", "Express", "MongoDB", "Mongoose", "Zod", "Nodemailer", "Google OAuth"], ["Real-time", "Yjs · CRDTs", "Hocuspocus", "WebSockets"], ["AI-assisted development", "Claude", "Codex", "Gemini", "Antigravity", "Agentic AI · in progress"], ["Tools & craft", "GitHub", "Vercel", "Render", "LaTeX", "Ownership", "Fast learner"]].map(([group, ...items]) => <Reveal key={group} className="skill-group"><h3>{group}</h3><div className="skill-pills">{items.map((item) => <span key={item}>{item}</span>)}</div></Reveal>)}
+            {[["Languages", "TypeScript", "JavaScript", "Python", "Java (core)"], ["Frontend", "React", "Next.js", "Tailwind CSS"], ["Backend & data", "Node.js", "Express", "MongoDB", "Google OAuth"], ["Real-time", "Yjs · CRDTs", "Hocuspocus", "WebSockets"], ["AI-assisted development", "Claude", "Codex", "Gemini", "Antigravity", "Agentic AI · in progress"], ["Tools & craft", "GitHub", "Vercel", "Render", "LaTeX", "Ownership", "Fast learner"]].map(([group, ...items]) => <Reveal key={group} className="skill-group"><h3>{group}</h3><div className="skill-pills">{items.map((item) => <span key={item}>{item}</span>)}</div></Reveal>)}
           </div>
         </section>
 
