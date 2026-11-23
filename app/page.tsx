@@ -43,7 +43,7 @@ export default function Home() {
             <div className="availability"><span className="status-dot" /> Open to Work <i>·</i> Karachi, Pakistan</div>
             <h1>Muhammad<br /><em>Abdullah Jamil</em></h1>
             <p className="hero-role">Full Stack Developer <span>·</span> Real-time apps &amp; AI-assisted engineering</p>
-            <p className="hero-intro">Full stack developer from Karachi. I’ve worked on real-time projects with AI agents and follow professional standards so the work holds up.</p>
+            <p className="hero-intro">Full stack developer from Karachi. I’ve worked on real-time projects with AI agents and work with best practices so the work holds up.</p>
             <div className="hero-actions"><a className="button button-primary" href="#work">Explore my work <span>↗</span></a><a className="button button-quiet" href={`mailto:${email}`}>Email me</a></div>
             <div className="hero-social"><a href="https://github.com/abdullah-jamil355" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/abdullah-jamil-593066222" target="_blank" rel="noreferrer">LinkedIn ↗</a><span>Available for remote work</span></div>
           </div>
@@ -67,7 +67,7 @@ export default function Home() {
           <ul className="outlook-grid">
             <li><span>01</span><p>Just getting started. Always learning what the next challenge needs.</p></li>
             <li><span>02</span><p>Curious about what’s possible. Accountable for what I build.</p></li>
-            <li><span>03</span><p>I want to grow my experience with large-scale production systems, building on my work with real-time apps and observability.</p></li>
+            <li><span>03</span><p>I am seeking an opportunity to deepen my expertise by working on high-traffic, large-scale production systems.</p></li>
             <li><span>04</span><p>In the next five years, I hope to become a confident full-stack engineer who can own products end to end and help build reliable real-time systems at production scale. I want to deepen my skills in system design and production engineering by working on real products with a strong team. I’m starting by building solid fundamentals, taking ownership, and learning from every project.</p></li>
           </ul>
         </section>
