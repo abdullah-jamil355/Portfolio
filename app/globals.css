@@ -515,6 +515,12 @@ main, header, footer {
 .site-footer .brand { color: var(--ivory); }
 .site-footer > a:last-child:hover { color: var(--gold); }
 
+.cv-page { min-height: 100vh; padding: 24px; background: var(--bg); }
+.cv-toolbar { width: min(100%, 1160px); min-height: 56px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.cv-toolbar .brand { color: var(--ivory); }
+.cv-actions { display: flex; align-items: center; gap: 10px; }
+.cv-frame { display: block; width: min(100%, 1160px); height: calc(100vh - 122px); min-height: 560px; margin: 0 auto; border: 1px solid var(--line); background: #fff; }
+
 @media (max-width: 850px) {
   .hero { grid-template-columns: 1fr .8fr; gap: 34px; }
   .experience-points { grid-template-columns: 1fr; gap: 8px; }
@@ -543,6 +549,11 @@ main, header, footer {
   .contact-links { gap: 17px; }
   .site-footer { flex-wrap: wrap; gap: 14px; padding-block: 19px; }
   .site-footer > span { order: 3; width: 100%; }
+  .cv-page { padding: 12px; }
+  .cv-toolbar { align-items: flex-start; }
+  .cv-actions { gap: 6px; }
+  .cv-actions .button { min-height: 42px; padding-inline: 10px; gap: 6px; font-size: 11px; }
+  .cv-frame { height: calc(100vh - 100px); min-height: 460px; }
 }
 
 /* Two-sided, keyboard and touch accessible access pass */
