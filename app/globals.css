@@ -509,8 +509,7 @@ main, header, footer {
 .contact-links .whatsapp-icon, .contact-links .whatsapp-icon:hover { color: #25d366; }
 [data-theme="dark"] .contact-links .github-icon,
 [data-theme="dark"] .contact-links .github-icon:hover { color: #f5f5f5; }
-.resume-note { margin-top: 25px; color: var(--mute); font: 10px var(--font-mono), monospace; }
-.resume-note span { color: var(--gold); }
+.resume-note { margin-top: 25px; color: var(--ivory); font: inherit; }
 .site-footer { min-height: 82px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: var(--mute); font-size: 10px; }
 .site-footer .brand { color: var(--ivory); }
 .site-footer > a:last-child:hover { color: var(--gold); }
